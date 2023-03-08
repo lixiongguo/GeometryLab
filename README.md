@@ -1,1 +1,1 @@
-Hello My Geometry World
+Computational Geometry algorithm Library
