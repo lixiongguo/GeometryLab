@@ -9,8 +9,8 @@ from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 import numpy as np
-from bo
 sys.path.append('./BO')
+from BO.bo import 
 
 from geo.point import Point
 from geo.coordinates_hash import CoordinatesHash
