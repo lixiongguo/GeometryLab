@@ -160,6 +160,25 @@ class Segment:
         else:
             return (xSegment, -angle)
 
+
+     
+
+    def up_down_point(self):
+        # min_coordinates, max_coordinates = self.bounding_quadrant().get_arrays()
+        # return
+        if self.endpoints[0].coordinates[1] > self.endpoints[1].coordinates[1]:
+            up_point = self.endpoints[0]
+            down_point = self.endpoints[1]
+        else:
+            up_point = self.endpoints[1]
+            down_point = self.endpoints[0]
+
+        return up_point,down_point
+
+    def left_x(self):
+        min_coordinates, _ = self.bounding_quadrant().get_arrays()
+        return min_coordinates[0]
+
     @staticmethod
     def changeScanPoint(y, x):
         """
