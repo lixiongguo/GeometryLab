@@ -175,9 +175,9 @@ class Segment:
 
         return up_point,down_point
 
-    def left_x(self):
-        min_coordinates, _ = self.bounding_quadrant().get_arrays()
-        return min_coordinates[0]
+    def up_x(self):
+        up_point,_ = self.up_down_point()
+        return up_point.coordinates[0]
 
     @staticmethod
     def changeScanPoint(y, x):
@@ -197,7 +197,9 @@ class Segment:
 
 
     def __eq__(self, other):
-        return self.key() == other.key()
+        #lgx 这里暂做修改
+        # return self.key() == other.key()
+        self.index == other.index
 
     def __str__(self):
         return "Segment([" + str(self.endpoints[0]) + ", " + \

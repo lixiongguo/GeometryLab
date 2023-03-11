@@ -9,8 +9,8 @@ from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 import numpy as np
-
 sys.path.append('./BO')
+from BO.myBO import lgx_BO
 
 from geo.point import Point
 from geo.coordinates_hash import CoordinatesHash
@@ -44,14 +44,16 @@ def write_data():
             segment = Segment([Point([point[0], point[1]]), Point([point[2], point[3]])],idx)
             segments.append(segment)
     adjuster = CoordinatesHash()
-    intersections = bentley_ottmann(segments, adjuster)
-    list_points = [p for l in intersections for p in l]
-    list_points = list(set(list_points))
+    # intersections = bentley_ottmann(segments, adjuster)
+    # list_points = [p for l in intersections for p in l]
+    # list_points = list(set(list_points))
+    lgx_bo = lgx_BO(segments)
+    list_points = lgx_bo.bo_solve()
     global fig,ax,canvas
     for point in list_points:
         ax.scatter(point.coordinates[0], point.coordinates[1], s=30, c='b')
     canvas.draw()
-    print(list_points)
+   
 
 def _quit(): 
     root.quit()     # 停止主循环
